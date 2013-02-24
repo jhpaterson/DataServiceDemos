@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataServiceDemo", "DataServiceDemo\DataServiceDemo.csproj", "{AAC7C2DA-09C6-4737-BF2A-C0FE8AD2164B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinookWCFClient", "ChinookWCFClient\ChinookWCFClient.csproj", "{B734C35F-1B7F-40E9-AFE5-B49FA3E29FD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIODataDemo", "WebAPIODataDemo\WebAPIODataDemo.csproj", "{5955C177-DB25-413D-9827-52F23C20EE0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAC7C2DA-09C6-4737-BF2A-C0FE8AD2164B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC7C2DA-09C6-4737-BF2A-C0FE8AD2164B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC7C2DA-09C6-4737-BF2A-C0FE8AD2164B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC7C2DA-09C6-4737-BF2A-C0FE8AD2164B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B734C35F-1B7F-40E9-AFE5-B49FA3E29FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B734C35F-1B7F-40E9-AFE5-B49FA3E29FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B734C35F-1B7F-40E9-AFE5-B49FA3E29FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B734C35F-1B7F-40E9-AFE5-B49FA3E29FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5955C177-DB25-413D-9827-52F23C20EE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5955C177-DB25-413D-9827-52F23C20EE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5955C177-DB25-413D-9827-52F23C20EE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5955C177-DB25-413D-9827-52F23C20EE0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

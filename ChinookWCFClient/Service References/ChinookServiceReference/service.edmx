@@ -1,0 +1,130 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="ChinookModel" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="Album">
+        <Key>
+          <PropertyRef Name="AlbumId" />
+        </Key>
+        <Property Name="AlbumId" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="160" FixedLength="false" Unicode="true" />
+        <Property Name="ArtistId" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Artist" Relationship="ChinookModel.FK_AlbumArtistId" ToRole="Artist" FromRole="Album" />
+        <NavigationProperty Name="Tracks" Relationship="ChinookModel.FK_TrackAlbumId" ToRole="Track" FromRole="Album" />
+      </EntityType>
+      <EntityType Name="Artist">
+        <Key>
+          <PropertyRef Name="ArtistId" />
+        </Key>
+        <Property Name="ArtistId" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" MaxLength="120" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="Albums" Relationship="ChinookModel.FK_AlbumArtistId" ToRole="Album" FromRole="Artist" />
+      </EntityType>
+      <EntityType Name="Genre">
+        <Key>
+          <PropertyRef Name="GenreId" />
+        </Key>
+        <Property Name="GenreId" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" MaxLength="120" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="Tracks" Relationship="ChinookModel.FK_TrackGenreId" ToRole="Track" FromRole="Genre" />
+      </EntityType>
+      <EntityType Name="MediaType">
+        <Key>
+          <PropertyRef Name="MediaTypeId" />
+        </Key>
+        <Property Name="MediaTypeId" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" MaxLength="120" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="Tracks" Relationship="ChinookModel.FK_TrackMediaTypeId" ToRole="Track" FromRole="MediaType" />
+      </EntityType>
+      <EntityType Name="Track">
+        <Key>
+          <PropertyRef Name="TrackId" />
+        </Key>
+        <Property Name="TrackId" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        <Property Name="AlbumId" Type="Edm.Int32" />
+        <Property Name="MediaTypeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="GenreId" Type="Edm.Int32" />
+        <Property Name="Composer" Type="Edm.String" MaxLength="220" FixedLength="false" Unicode="true" />
+        <Property Name="Milliseconds" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Bytes" Type="Edm.Int32" />
+        <Property Name="UnitPrice" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <NavigationProperty Name="Album" Relationship="ChinookModel.FK_TrackAlbumId" ToRole="Album" FromRole="Track" />
+        <NavigationProperty Name="Genre" Relationship="ChinookModel.FK_TrackGenreId" ToRole="Genre" FromRole="Track" />
+        <NavigationProperty Name="MediaType" Relationship="ChinookModel.FK_TrackMediaTypeId" ToRole="MediaType" FromRole="Track" />
+      </EntityType>
+      <Association Name="FK_AlbumArtistId">
+        <End Type="ChinookModel.Artist" Role="Artist" Multiplicity="1" />
+        <End Type="ChinookModel.Album" Role="Album" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Artist">
+            <PropertyRef Name="ArtistId" />
+          </Principal>
+          <Dependent Role="Album">
+            <PropertyRef Name="ArtistId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_TrackAlbumId">
+        <End Type="ChinookModel.Album" Role="Album" Multiplicity="0..1" />
+        <End Type="ChinookModel.Track" Role="Track" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Album">
+            <PropertyRef Name="AlbumId" />
+          </Principal>
+          <Dependent Role="Track">
+            <PropertyRef Name="AlbumId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_TrackGenreId">
+        <End Type="ChinookModel.Genre" Role="Genre" Multiplicity="0..1" />
+        <End Type="ChinookModel.Track" Role="Track" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Genre">
+            <PropertyRef Name="GenreId" />
+          </Principal>
+          <Dependent Role="Track">
+            <PropertyRef Name="GenreId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_TrackMediaTypeId">
+        <End Type="ChinookModel.MediaType" Role="MediaType" Multiplicity="1" />
+        <End Type="ChinookModel.Track" Role="Track" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="MediaType">
+            <PropertyRef Name="MediaTypeId" />
+          </Principal>
+          <Dependent Role="Track">
+            <PropertyRef Name="MediaTypeId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+    </Schema>
+    <Schema Namespace="DataServiceDemo.Model" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityContainer Name="ChinookEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntitySet Name="Albums" EntityType="ChinookModel.Album" />
+        <EntitySet Name="Artists" EntityType="ChinookModel.Artist" />
+        <EntitySet Name="Genres" EntityType="ChinookModel.Genre" />
+        <EntitySet Name="MediaTypes" EntityType="ChinookModel.MediaType" />
+        <EntitySet Name="Tracks" EntityType="ChinookModel.Track" />
+        <AssociationSet Name="FK_AlbumArtistId" Association="ChinookModel.FK_AlbumArtistId">
+          <End Role="Album" EntitySet="Albums" />
+          <End Role="Artist" EntitySet="Artists" />
+        </AssociationSet>
+        <AssociationSet Name="FK_TrackAlbumId" Association="ChinookModel.FK_TrackAlbumId">
+          <End Role="Album" EntitySet="Albums" />
+          <End Role="Track" EntitySet="Tracks" />
+        </AssociationSet>
+        <AssociationSet Name="FK_TrackGenreId" Association="ChinookModel.FK_TrackGenreId">
+          <End Role="Genre" EntitySet="Genres" />
+          <End Role="Track" EntitySet="Tracks" />
+        </AssociationSet>
+        <AssociationSet Name="FK_TrackMediaTypeId" Association="ChinookModel.FK_TrackMediaTypeId">
+          <End Role="MediaType" EntitySet="MediaTypes" />
+          <End Role="Track" EntitySet="Tracks" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
